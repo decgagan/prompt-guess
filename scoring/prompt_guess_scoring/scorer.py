@@ -19,13 +19,13 @@ class Params:
     cos_hi: float = 0.95   # cosine at/above which semantic score is 100
     gamma: float = 1.0     # curve shape for the semantic mapping
     kw_weight: float = 0.2 # share of the final score from keyword recall
-    version: int = 1        # 1 = original synonym table, 2 = + v2 synonym groups
+    version: int = 1        # 1 = original synonym table; 2 and 3 = + v2 synonym groups
     thresholds: dict = field(default_factory=lambda: {"great": 80, "close": 55, "partial": 30})
 
     @classmethod
     def load(cls, path: Path = PARAMS_PATH, version: int | None = None) -> "Params":
-        if version == 1:
-            path = PARAMS_PATH.with_name("params_v1.json")
+        if version in (1, 2):
+            path = PARAMS_PATH.with_name(f"params_v{version}.json")
         return cls(**json.loads(path.read_text())) if path.exists() else cls()
 
     def save(self, path: Path = PARAMS_PATH) -> None:

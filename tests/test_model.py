@@ -32,4 +32,4 @@ def test_eval_metrics_floor():
 
 def test_v1_still_available():
     from prompt_guess_scoring import Params
-    assert Params.load(version=1).kw_weight == 0.2 and Params.load().version == 2
+    assert Params.load(version=1).kw_weight == 0.2 and Params.load().version == 3 and Params.load(version=2).kw_weight == 0.15

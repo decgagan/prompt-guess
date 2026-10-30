@@ -4,14 +4,15 @@
 
 ## Status
 
-**Milestone 1 (scoring engine): done.** See [`scoring/`](scoring/README.md).
+**Milestone 1 (scoring engine): done.** Current scorer: **v3** (v2 synonym groups with v1 weights). See [`scoring/`](scoring/README.md).
 
-| Metric (64 synthetic pairs) | Value |
+| Metric (scorer v3) | Value |
 |---|---|
-| Spearman correlation vs. expected bucket | 0.968 |
-| Bucket accuracy (great / close / partial / miss) | 95.3% |
-| Bucket accuracy, 4-fold CV on held-out prompts | 92.2% |
-| Predictions within one bucket | 100% |
+| eval.csv Spearman (64 synthetic pairs) | 0.968 |
+| eval.csv bucket accuracy | 95.3% |
+| vs Dec's 12 hand ratings: mean absolute error | 6.1 |
+| vs Dec's 12 hand ratings: Spearman | 0.943 |
+| vs Dec's 12 hand ratings: same bucket | 12/12 |
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu

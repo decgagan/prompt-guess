@@ -45,3 +45,13 @@ A small tweak after Dec's ratings: v1 is kept as `params_v1.json` (`Params.load(
 |---|---|---|---|---|---|
 | v1 | 0.968 | 95.3% | 7.0 | 0.957 | 12/12 |
 | v2 | 0.966 | 90.6% | 6.0 | 0.943 | 12/12 |
+
+## v3 (2026-10-30): current default
+
+The halfway option: v2's extra synonym groups with v1's weights (80% meaning / 20% key words, cosine ceiling 0.90). v1 and v2 are kept as `params_v1.json` and `params_v2.json` (`Params.load(version=1|2)`); v3 is `params.json`.
+
+| | eval.csv Spearman | eval.csv bucket acc. | vs Dec: MAE | vs Dec: Spearman | vs Dec: buckets |
+|---|---|---|---|---|---|
+| v1 | 0.968 | 95.3% | 7.0 | 0.957 | 12/12 |
+| v2 | 0.966 | 90.6% | 6.0 | 0.943 | 12/12 |
+| **v3** | **0.968** | **95.3%** | **6.1** | **0.943** | **12/12** |
