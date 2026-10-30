@@ -28,3 +28,7 @@ Mean score by expected bucket: miss 0, partial 30, close 61, great 91.
 - The eval set is small and written by one person; real guesses will be messier. Re-tune once real (anonymised) guesses exist.
 - The synonym table is hand-made and short.
 - Embeddings can't tell some opposites apart ("a happy dog" vs "a sad dog" score high).
+
+## Human rating check
+
+`human_ratings.csv` holds 12 pairs from `eval.csv` that Dec scored by hand (0–100) on 2026-10-30, next to the scorer's score at the time (v1). v1 agreed with his buckets on 12 of 12 pairs, with a mean absolute error of 7.0 points and Spearman 0.958. It was a little stingy when a guess used a broader or similar word ("board game" for "chess", "spaceman" for "astronaut").
