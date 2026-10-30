@@ -1,0 +1,5 @@
+sentence-transformers>=3.0
+numpy
+pandas
+scipy
+pytest

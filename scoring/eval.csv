@@ -1,0 +1,66 @@
+# SYNTHETIC TEST DATA: hand-written by the project author for calibrating the scorer. Not real player guesses.
+answer,guess,expected
+"a golden retriever running on a beach at sunset","a golden dog running along the seaside at dusk",great
+"a golden retriever running on a beach at sunset","a dog on a beach",close
+"a golden retriever running on a beach at sunset","an animal outdoors in the evening",partial
+"a golden retriever running on a beach at sunset","a bowl of ramen noodles",miss
+"an astronaut riding a horse on the moon","a spaceman on horseback on the moon",great
+"an astronaut riding a horse on the moon","an astronaut in space with an animal",close
+"an astronaut riding a horse on the moon","a cowboy riding a horse in the desert",partial
+"an astronaut riding a horse on the moon","a plate of spaghetti",miss
+"a cosy cabin in a snowy forest at night","a warm cottage in snowy woods at night",great
+"a cosy cabin in a snowy forest at night","a house in the snow",close
+"a cosy cabin in a snowy forest at night","trees in winter",partial
+"a cosy cabin in a snowy forest at night","a red sports car on a racetrack",miss
+"a cat reading a newspaper in a cafe","a kitten reading the paper in a coffee shop",great
+"a cat reading a newspaper in a cafe","a cat in a cafe",close
+"a cat reading a newspaper in a cafe","a person reading a book",partial
+"a cat reading a newspaper in a cafe","a volcano erupting",miss
+"a neon-lit cyberpunk city street in the rain","a rainy cyberpunk street with neon lights",great
+"a neon-lit cyberpunk city street in the rain","a futuristic city at night",close
+"a neon-lit cyberpunk city street in the rain","a wet road",partial
+"a neon-lit cyberpunk city street in the rain","a field of sunflowers",miss
+"a watercolour painting of a fox in autumn leaves","a watercolor of a fox among fall leaves",great
+"a watercolour painting of a fox in autumn leaves","a fox in the forest",close
+"a watercolour painting of a fox in autumn leaves","an orange animal",partial
+"a watercolour painting of a fox in autumn leaves","a skyscraper made of glass",miss
+"a robot watering plants in a greenhouse","a robot gardener watering plants in a glasshouse",great
+"a robot watering plants in a greenhouse","a machine looking after plants",close
+"a robot watering plants in a greenhouse","a garden with flowers",partial
+"a robot watering plants in a greenhouse","a medieval knight on a horse",miss
+"a dragon sleeping on a pile of gold coins","a dragon asleep on a heap of gold treasure",great
+"a dragon sleeping on a pile of gold coins","a dragon with treasure",close
+"a dragon sleeping on a pile of gold coins","a pile of money",partial
+"a dragon sleeping on a pile of gold coins","a toddler eating ice cream",miss
+"a lighthouse on a cliff during a storm","a lighthouse on cliffs in a stormy sea",great
+"a lighthouse on a cliff during a storm","a lighthouse by the ocean",close
+"a lighthouse on a cliff during a storm","big waves crashing",partial
+"a lighthouse on a cliff during a storm","a birthday cake with candles",miss
+"an old man playing chess in a park","an elderly gentleman playing chess in the park",great
+"an old man playing chess in a park","a man playing a board game outside",close
+"an old man playing chess in a park","a park bench",partial
+"an old man playing chess in a park","a submarine underwater",miss
+"a hot air balloon floating over mountains","hot air balloons flying above the mountains",great
+"a hot air balloon floating over mountains","a balloon in the sky",close
+"a hot air balloon floating over mountains","a mountain landscape",partial
+"a hot air balloon floating over mountains","a bowl of cereal",miss
+"a tiny frog wearing a crown sitting on a mushroom","a little frog with a crown on a toadstool",great
+"a tiny frog wearing a crown sitting on a mushroom","a frog king",close
+"a tiny frog wearing a crown sitting on a mushroom","a mushroom in the woods",partial
+"a tiny frog wearing a crown sitting on a mushroom","a busy train station",miss
+"a steaming cup of coffee on a rainy windowsill","a hot coffee by a window on a rainy day",great
+"a steaming cup of coffee on a rainy windowsill","a mug of coffee",close
+"a steaming cup of coffee on a rainy windowsill","raindrops on glass",partial
+"a steaming cup of coffee on a rainy windowsill","a tiger in the jungle",miss
+"a pirate ship sailing through the clouds","a flying pirate ship in the clouds",great
+"a pirate ship sailing through the clouds","a ship in the sky",close
+"a pirate ship sailing through the clouds","a sailboat on the sea",partial
+"a pirate ship sailing through the clouds","a laptop on a desk",miss
+"children flying kites on a windy hill","kids flying kites on a hill on a windy day",great
+"children flying kites on a windy hill","kids playing with kites",close
+"children flying kites on a windy hill","a grassy hill",partial
+"children flying kites on a windy hill","a sushi platter",miss
+"a polar bear drinking tea in the arctic","a polar bear sipping a cup of tea on the ice",great
+"a polar bear drinking tea in the arctic","a bear having a drink",close
+"a polar bear drinking tea in the arctic","snowy arctic landscape",partial
+"a polar bear drinking tea in the arctic","a jazz band on stage",miss
