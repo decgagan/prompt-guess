@@ -1,0 +1,851 @@
+[
+ {
+  "source": "eval",
+  "answer": "a golden retriever running on a beach at sunset",
+  "guess": "a golden dog running along the seaside at dusk",
+  "cosine": 0.8779513239860535,
+  "score": 91.0,
+  "bucket": "great",
+  "matched": [
+   "golden",
+   "running",
+   "beach",
+   "sunset"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a golden retriever running on a beach at sunset",
+  "guess": "a dog on a beach",
+  "cosine": 0.7860136032104492,
+  "score": 57.9,
+  "bucket": "close",
+  "matched": [
+   "beach"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a golden retriever running on a beach at sunset",
+  "guess": "an animal outdoors in the evening",
+  "cosine": 0.6956151127815247,
+  "score": 33.3,
+  "bucket": "partial",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a golden retriever running on a beach at sunset",
+  "guess": "a bowl of ramen noodles",
+  "cosine": 0.38809096813201904,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "a spaceman on horseback on the moon",
+  "cosine": 0.8872236013412476,
+  "score": 92.1,
+  "bucket": "great",
+  "matched": [
+   "astronaut",
+   "horse",
+   "moon"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "an astronaut in space with an animal",
+  "cosine": 0.7809520959854126,
+  "score": 57.8,
+  "bucket": "close",
+  "matched": [
+   "astronaut"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "a cowboy riding a horse in the desert",
+  "cosine": 0.610013484954834,
+  "score": 23.7,
+  "bucket": "partial",
+  "matched": [
+   "riding",
+   "horse"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "a plate of spaghetti",
+  "cosine": 0.45486897230148315,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a cosy cabin in a snowy forest at night",
+  "guess": "a warm cottage in snowy woods at night",
+  "cosine": 0.8715265989303589,
+  "score": 89.5,
+  "bucket": "great",
+  "matched": [
+   "cabin",
+   "snowy",
+   "forest",
+   "night"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cosy cabin in a snowy forest at night",
+  "guess": "a house in the snow",
+  "cosine": 0.7388307452201843,
+  "score": 51.2,
+  "bucket": "close",
+  "matched": [
+   "cabin",
+   "snowy"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cosy cabin in a snowy forest at night",
+  "guess": "trees in winter",
+  "cosine": 0.7325966358184814,
+  "score": 45.7,
+  "bucket": "partial",
+  "matched": [
+   "snowy"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cosy cabin in a snowy forest at night",
+  "guess": "a red sports car on a racetrack",
+  "cosine": 0.3928026258945465,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a cat reading a newspaper in a cafe",
+  "guess": "a kitten reading the paper in a coffee shop",
+  "cosine": 0.8473613262176514,
+  "score": 78.0,
+  "bucket": "close",
+  "matched": [
+   "cat",
+   "reading"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cat reading a newspaper in a cafe",
+  "guess": "a cat in a cafe",
+  "cosine": 0.8677411675453186,
+  "score": 82.6,
+  "bucket": "close",
+  "matched": [
+   "cat",
+   "cafe"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cat reading a newspaper in a cafe",
+  "guess": "a person reading a book",
+  "cosine": 0.5610259771347046,
+  "score": 7.5,
+  "bucket": "partial",
+  "matched": [
+   "reading"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a cat reading a newspaper in a cafe",
+  "guess": "a volcano erupting",
+  "cosine": 0.43891963362693787,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a neon-lit cyberpunk city street in the rain",
+  "guess": "a rainy cyberpunk street with neon lights",
+  "cosine": 0.9600451588630676,
+  "score": 92.0,
+  "bucket": "great",
+  "matched": [
+   "neon",
+   "street",
+   "rain"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a neon-lit cyberpunk city street in the rain",
+  "guess": "a futuristic city at night",
+  "cosine": 0.7637543678283691,
+  "score": 52.9,
+  "bucket": "close",
+  "matched": [
+   "city"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a neon-lit cyberpunk city street in the rain",
+  "guess": "a wet road",
+  "cosine": 0.7211570143699646,
+  "score": 43.1,
+  "bucket": "partial",
+  "matched": [
+   "street"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a neon-lit cyberpunk city street in the rain",
+  "guess": "a field of sunflowers",
+  "cosine": 0.5128558278083801,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a watercolour painting of a fox in autumn leaves",
+  "guess": "a watercolor of a fox among fall leaves",
+  "cosine": 0.9419323205947876,
+  "score": 95.0,
+  "bucket": "great",
+  "matched": [
+   "watercolour",
+   "fox",
+   "leaves"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a watercolour painting of a fox in autumn leaves",
+  "guess": "a fox in the forest",
+  "cosine": 0.7631386518478394,
+  "score": 53.7,
+  "bucket": "close",
+  "matched": [
+   "fox"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a watercolour painting of a fox in autumn leaves",
+  "guess": "an orange animal",
+  "cosine": 0.608938455581665,
+  "score": 13.5,
+  "bucket": "partial",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a watercolour painting of a fox in autumn leaves",
+  "guess": "a skyscraper made of glass",
+  "cosine": 0.5259110927581787,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a robot watering plants in a greenhouse",
+  "guess": "a robot gardener watering plants in a glasshouse",
+  "cosine": 0.8820517659187317,
+  "score": 90.9,
+  "bucket": "great",
+  "matched": [
+   "robot",
+   "watering",
+   "plants"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a robot watering plants in a greenhouse",
+  "guess": "a machine looking after plants",
+  "cosine": 0.8192569613456726,
+  "score": 71.5,
+  "bucket": "close",
+  "matched": [
+   "robot",
+   "plants"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a robot watering plants in a greenhouse",
+  "guess": "a garden with flowers",
+  "cosine": 0.7061225771903992,
+  "score": 40.7,
+  "bucket": "partial",
+  "matched": [
+   "plants"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a robot watering plants in a greenhouse",
+  "guess": "a medieval knight on a horse",
+  "cosine": 0.4365287721157074,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a dragon sleeping on a pile of gold coins",
+  "guess": "a dragon asleep on a heap of gold treasure",
+  "cosine": 0.9277858734130859,
+  "score": 88.0,
+  "bucket": "great",
+  "matched": [
+   "dragon",
+   "gold"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a dragon sleeping on a pile of gold coins",
+  "guess": "a dragon with treasure",
+  "cosine": 0.7511860132217407,
+  "score": 50.0,
+  "bucket": "close",
+  "matched": [
+   "dragon"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a dragon sleeping on a pile of gold coins",
+  "guess": "a pile of money",
+  "cosine": 0.6167407631874084,
+  "score": 19.3,
+  "bucket": "partial",
+  "matched": [
+   "pile"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a dragon sleeping on a pile of gold coins",
+  "guess": "a toddler eating ice cream",
+  "cosine": 0.42457032203674316,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a lighthouse on a cliff during a storm",
+  "guess": "a lighthouse on cliffs in a stormy sea",
+  "cosine": 0.9435280561447144,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "lighthouse",
+   "cliff",
+   "storm"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a lighthouse on a cliff during a storm",
+  "guess": "a lighthouse by the ocean",
+  "cosine": 0.8301299214363098,
+  "score": 70.7,
+  "bucket": "close",
+  "matched": [
+   "lighthouse"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a lighthouse on a cliff during a storm",
+  "guess": "big waves crashing",
+  "cosine": 0.6956561803817749,
+  "score": 33.3,
+  "bucket": "partial",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a lighthouse on a cliff during a storm",
+  "guess": "a birthday cake with candles",
+  "cosine": 0.46252205967903137,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "an old man playing chess in a park",
+  "guess": "an elderly gentleman playing chess in the park",
+  "cosine": 0.9700301289558411,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "old",
+   "man",
+   "playing",
+   "chess",
+   "park"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an old man playing chess in a park",
+  "guess": "a man playing a board game outside",
+  "cosine": 0.7432241439819336,
+  "score": 60.2,
+  "bucket": "close",
+  "matched": [
+   "man",
+   "playing",
+   "chess",
+   "park"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an old man playing chess in a park",
+  "guess": "a park bench",
+  "cosine": 0.6254596710205078,
+  "score": 21.2,
+  "bucket": "partial",
+  "matched": [
+   "park"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "an old man playing chess in a park",
+  "guess": "a submarine underwater",
+  "cosine": 0.32005029916763306,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a hot air balloon floating over mountains",
+  "guess": "hot air balloons flying above the mountains",
+  "cosine": 0.9128533601760864,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "hot",
+   "air",
+   "balloon",
+   "floating",
+   "mountains"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a hot air balloon floating over mountains",
+  "guess": "a balloon in the sky",
+  "cosine": 0.804372251033783,
+  "score": 62.1,
+  "bucket": "close",
+  "matched": [
+   "balloon"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a hot air balloon floating over mountains",
+  "guess": "a mountain landscape",
+  "cosine": 0.701819658279419,
+  "score": 38.7,
+  "bucket": "partial",
+  "matched": [
+   "mountains"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a hot air balloon floating over mountains",
+  "guess": "a bowl of cereal",
+  "cosine": 0.5242793560028076,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a tiny frog wearing a crown sitting on a mushroom",
+  "guess": "a little frog with a crown on a toadstool",
+  "cosine": 0.8288752436637878,
+  "score": 73.7,
+  "bucket": "close",
+  "matched": [
+   "tiny",
+   "frog",
+   "crown"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a tiny frog wearing a crown sitting on a mushroom",
+  "guess": "a frog king",
+  "cosine": 0.6902199983596802,
+  "score": 35.4,
+  "bucket": "partial",
+  "matched": [
+   "frog"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a tiny frog wearing a crown sitting on a mushroom",
+  "guess": "a mushroom in the woods",
+  "cosine": 0.6472691297531128,
+  "score": 25.6,
+  "bucket": "partial",
+  "matched": [
+   "mushroom"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a tiny frog wearing a crown sitting on a mushroom",
+  "guess": "a busy train station",
+  "cosine": 0.42651379108428955,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a steaming cup of coffee on a rainy windowsill",
+  "guess": "a hot coffee by a window on a rainy day",
+  "cosine": 0.9307221174240112,
+  "score": 88.0,
+  "bucket": "great",
+  "matched": [
+   "coffee",
+   "rainy"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a steaming cup of coffee on a rainy windowsill",
+  "guess": "a mug of coffee",
+  "cosine": 0.7944599390029907,
+  "score": 63.9,
+  "bucket": "close",
+  "matched": [
+   "cup",
+   "coffee"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a steaming cup of coffee on a rainy windowsill",
+  "guess": "raindrops on glass",
+  "cosine": 0.7663488388061523,
+  "score": 49.5,
+  "bucket": "partial",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a steaming cup of coffee on a rainy windowsill",
+  "guess": "a tiger in the jungle",
+  "cosine": 0.4929059147834778,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a pirate ship sailing through the clouds",
+  "guess": "a flying pirate ship in the clouds",
+  "cosine": 0.956874668598175,
+  "score": 95.0,
+  "bucket": "great",
+  "matched": [
+   "pirate",
+   "ship",
+   "clouds"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a pirate ship sailing through the clouds",
+  "guess": "a ship in the sky",
+  "cosine": 0.7834821343421936,
+  "score": 58.4,
+  "bucket": "close",
+  "matched": [
+   "ship"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a pirate ship sailing through the clouds",
+  "guess": "a sailboat on the sea",
+  "cosine": 0.7223484516143799,
+  "score": 44.4,
+  "bucket": "partial",
+  "matched": [
+   "ship"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a pirate ship sailing through the clouds",
+  "guess": "a laptop on a desk",
+  "cosine": 0.4883697032928467,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "children flying kites on a windy hill",
+  "guess": "kids flying kites on a hill on a windy day",
+  "cosine": 0.9690697193145752,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "children",
+   "flying",
+   "kites",
+   "windy",
+   "hill"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "children flying kites on a windy hill",
+  "guess": "kids playing with kites",
+  "cosine": 0.8798950910568237,
+  "score": 83.4,
+  "bucket": "close",
+  "matched": [
+   "children",
+   "kites"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "children flying kites on a windy hill",
+  "guess": "a grassy hill",
+  "cosine": 0.602910041809082,
+  "score": 16.1,
+  "bucket": "partial",
+  "matched": [
+   "hill"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "children flying kites on a windy hill",
+  "guess": "a sushi platter",
+  "cosine": 0.4470314681529999,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "eval",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "a polar bear sipping a cup of tea on the ice",
+  "cosine": 0.9437997341156006,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "polar",
+   "bear",
+   "drinking",
+   "tea"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "a bear having a drink",
+  "cosine": 0.8456003665924072,
+  "score": 77.6,
+  "bucket": "close",
+  "matched": [
+   "bear",
+   "drinking"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "snowy arctic landscape",
+  "cosine": 0.6441823244094849,
+  "score": 26.5,
+  "bucket": "partial",
+  "matched": [
+   "polar"
+  ]
+ },
+ {
+  "source": "eval",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "a jazz band on stage",
+  "cosine": 0.3738948702812195,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "dec",
+  "answer": "a hot air balloon floating over mountains",
+  "guess": "a balloon in the sky",
+  "cosine": 0.804372251033783,
+  "score": 62.1,
+  "bucket": "close",
+  "matched": [
+   "balloon"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "a polar bear sipping a cup of tea on the ice",
+  "cosine": 0.9437997341156006,
+  "score": 100.0,
+  "bucket": "great",
+  "matched": [
+   "polar",
+   "bear",
+   "drinking",
+   "tea"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a cosy cabin in a snowy forest at night",
+  "guess": "a house in the snow",
+  "cosine": 0.7388307452201843,
+  "score": 51.2,
+  "bucket": "close",
+  "matched": [
+   "cabin",
+   "snowy"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a robot watering plants in a greenhouse",
+  "guess": "a machine looking after plants",
+  "cosine": 0.8192569613456726,
+  "score": 71.5,
+  "bucket": "close",
+  "matched": [
+   "robot",
+   "plants"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a polar bear drinking tea in the arctic",
+  "guess": "a jazz band on stage",
+  "cosine": 0.3738948702812195,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "dec",
+  "answer": "a golden retriever running on a beach at sunset",
+  "guess": "a bowl of ramen noodles",
+  "cosine": 0.38809096813201904,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "dec",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "a spaceman on horseback on the moon",
+  "cosine": 0.8872236013412476,
+  "score": 92.1,
+  "bucket": "great",
+  "matched": [
+   "astronaut",
+   "horse",
+   "moon"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a pirate ship sailing through the clouds",
+  "guess": "a flying pirate ship in the clouds",
+  "cosine": 0.956874668598175,
+  "score": 95.0,
+  "bucket": "great",
+  "matched": [
+   "pirate",
+   "ship",
+   "clouds"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a lighthouse on a cliff during a storm",
+  "guess": "big waves crashing",
+  "cosine": 0.6956561803817749,
+  "score": 33.3,
+  "bucket": "partial",
+  "matched": []
+ },
+ {
+  "source": "dec",
+  "answer": "an astronaut riding a horse on the moon",
+  "guess": "a cowboy riding a horse in the desert",
+  "cosine": 0.610013484954834,
+  "score": 23.7,
+  "bucket": "partial",
+  "matched": [
+   "riding",
+   "horse"
+  ]
+ },
+ {
+  "source": "dec",
+  "answer": "a watercolour painting of a fox in autumn leaves",
+  "guess": "a skyscraper made of glass",
+  "cosine": 0.5259110927581787,
+  "score": 0.0,
+  "bucket": "miss",
+  "matched": []
+ },
+ {
+  "source": "dec",
+  "answer": "an old man playing chess in a park",
+  "guess": "a man playing a board game outside",
+  "cosine": 0.7432241439819336,
+  "score": 60.2,
+  "bucket": "close",
+  "matched": [
+   "man",
+   "playing",
+   "chess",
+   "park"
+  ]
+ }
+]

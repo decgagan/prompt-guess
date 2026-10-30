@@ -1,0 +1,13 @@
+name = "prompt-guess"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-05-01"
+
+# Workers AI for embeddings (@cf/baai/bge-small-en-v1.5), bound only in the deployed
+# environments. Local `wrangler pages dev` uses the top level (no AI binding, so no
+# Cloudflare login needed) and gets embeddings from EMBED_URL in .dev.vars instead.
+# Also set IMAGE_SALT as a secret in both environments and as a build env var (same value).
+[env.production.ai]
+binding = "AI"
+
+[env.preview.ai]
+binding = "AI"
