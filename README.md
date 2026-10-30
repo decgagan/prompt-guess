@@ -1,92 +1,112 @@
 # Prompt Guess
 
-*(working name)* A daily guessing game: everyone sees the same AI-generated image, and has **five guesses** to work out the prompt that made it. Each guess is scored **0–100 on how close its meaning is**, and the key words you hit are revealed as you go. Finish and share a spoiler-free emoji grid, Wordle-style.
+A daily guessing game. Everyone sees the same AI-generated image and has **five guesses** at the prompt that made it. Each guess is scored **0–100 on how close its meaning is**, not on exact wording, and the key words you hit are revealed as you go. At the end you can share a spoiler-free emoji grid, Wordle-style.
 
-## Status
+**Play:** <https://prompt-guess.pages.dev> (the first puzzle goes up on **9 November 2026**, UK time).
 
-**Milestone 1 (scoring engine): done.** Current scorer: **v3** (v2 synonym groups with v1 weights). See [`scoring/`](scoring/README.md).
+A portfolio project by Dec, a data science student. The interesting part is the scorer: turning "how close is this guess?" into a number that agrees with people.
 
-| Metric (scorer v3) | Value |
+## How scoring works
+
+Scorer **v3** (`scoring/prompt_guess_scoring/params.json`):
+
+1. **Meaning (80%).** The guess and the prompt are embedded with [`BAAI/bge-small-en-v1.5`](https://huggingface.co/BAAI/bge-small-en-v1.5) (384 dimensions) and compared with cosine similarity. Live, the same model runs on Cloudflare Workers AI as `@cf/baai/bge-small-en-v1.5`, so the calibration carries over.
+2. **Calibration.** With this model even unrelated sentences reach a cosine of about 0.4–0.5, so the cosine is mapped linearly onto 0–100: **0.55 or below is 0, 0.90 or above is 100**.
+3. **Key words (20%).** Content words (stopwords removed) are reduced to a base form and to a canonical word from hand-made synonym groups (for example puppy = dog). The share of the prompt's key words the guess hits is added in, and the matched words are revealed in the game.
+4. **Buckets.** 85+ **great**, 50+ **close**, 5+ **partial**, below that a **miss**.
+
+## Evaluation
+
+`scoring/eval.csv` holds 64 hand-written pairs (16 prompts × 4 guesses, one per bucket). It is synthetic test data, not real player guesses. `evaluate.py --tune` grid-searches the cosine range, keyword weight and thresholds.
+
+| Scorer v3 | Value |
 |---|---|
-| eval.csv Spearman (64 synthetic pairs) | 0.968 |
+| eval.csv Spearman | 0.968 |
 | eval.csv bucket accuracy | 95.3% |
+| 4-fold CV on unseen prompts (tuned) | Spearman 0.969, 92.2% buckets |
 | vs Dec's 12 hand ratings: mean absolute error | 6.1 |
 | vs Dec's 12 hand ratings: Spearman | 0.943 |
 | vs Dec's 12 hand ratings: same bucket | 12/12 |
 
+**Human rating test.** Dec scored 12 pairs by hand (`scoring/human_ratings.csv`). The scorer was then iterated:
+
+- **v1:** tuned on eval.csv. Matched all 12 of Dec's buckets, but was a bit stingy with broader or similar words ("spaceman" for "astronaut"). MAE 7.0.
+- **v2:** more synonym groups, 85/15 weighting and a cosine ceiling of 0.89. Closer to Dec (MAE 6.0) but bucket accuracy on eval.csv fell to 90.6%.
+- **v3:** the halfway option: v2's synonyms with v1's weights. It keeps v1's eval scores and most of v2's gain against Dec (MAE 6.1). v1 and v2 are kept as `params_v1.json` and `params_v2.json`.
+
+Nothing was fitted to Dec's 12 pairs. Full details are in [`scoring/README.md`](scoring/README.md).
+
+**Python/TypeScript parity.** The live scorer (`web/server/scoring.ts`) is a port of the Python one. `npm test` checks it against Python-computed scores for all 76 eval and hand-rated pairs: identical scores, same bucket 76/76. On the live site, Workers AI embeddings differ very slightly from the local model. In a spot check of five guesses, live scores were within about 3 points of Python, always in the same bucket.
+
+**Limitations:** the eval set is small and written by one person, the synonym table is short, and embeddings can't always tell opposites apart ("a happy dog" vs "a sad dog").
+
+## Architecture
+
+- **Front end:** Svelte 5 + Vite, served by Cloudflare Pages. Progress is kept in the browser; there are no accounts.
+- **API:** Cloudflare Pages Functions in `web/functions/api/`, with shared code in `web/server/`:
+  - `GET /api/today`: today's puzzle by UK date (number, alt text, image URL, blanked prompt mask). No answer.
+  - `POST /api/guess {date, guess}`: score, bucket and matched words. Only today's or past puzzles.
+  - `POST /api/reveal {date, guesses}`: the full prompt, only once the game is over.
+  - `GET /api/image?date=`: the image for a playable date.
+- **Rate limiting:** 30 requests a minute per IP (per isolate).
+- **Salted image names:** images are built to hashed names using `IMAGE_SALT`, so future images can't be guessed or listed.
+- **Leak check:** `npm run build` runs `scripts/check-dist.mjs`, which fails the build if any answer is in the client bundle. `test/dist.test.ts` checks it again.
+
+## Why the puzzles are in a private repo
+
+The code is public but the answers can't be. The 30 real puzzles (prompts, images and puzzle-specific synonyms) live in the private repo `decgagan/prompt-guess-puzzles`. This repo's history has been rewritten so that no puzzle data appears in it.
+
+Puzzles are loaded from `$PUZZLES_DIR`. If that isn't set, it uses a `prompt-guess-puzzles` checkout next to this repo, and failing that [`puzzles-sample/`](puzzles-sample/), which has three fake puzzles in the same format. Tests, CI and local dev work without the private data.
+
+## Run locally
+
 ```bash
+# Python scorer
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 cd scoring && python -m prompt_guess_scoring "a dog on a beach at sunset" "puppy by the sea"
-python evaluate.py --show      # metrics + every pair
-python evaluate.py --tune --cv # re-fit the calibration
-pytest -q
-```
+python evaluate.py --show        # metrics and every pair
+cd ..
 
-**Milestone 2 (first 30 puzzles): done.** The 30 real puzzles (answers, images, image-model prompts and puzzle-specific synonym groups) live in the **private** repo `decgagan/prompt-guess-puzzles`, so the answers can't be read from GitHub. This repo has only [`puzzles-sample/`](puzzles-sample/): three fake puzzles in the same format, used by tests, CI and local dev when the private data isn't there.
-
-> **Where puzzles come from:** `$PUZZLES_DIR`, else a `prompt-guess-puzzles` checkout next to this repo, else `puzzles-sample/`. Answers stay server-side: the client gets only the date, image and alt text, and the build fails if any answer ends up in the bundle.
-
-**Milestone 3 (playable game): done.** [`web/`](web/) is a Svelte 5 + Vite app with Cloudflare Pages Functions in `web/functions/api/`:
-
-- `GET /api/today`: today's puzzle by UK date (number, alt text, image URL, blanked prompt). No answer.
-- `POST /api/guess {date, guess}`: score 0–100, bucket, matched words and their positions in the prompt. Only today's or past puzzles.
-- `POST /api/reveal {date, guesses}`: the full prompt, only once the game is over (5 guesses, a winning last guess re-scored on the server, or a past puzzle).
-- `GET /api/image?date=`: the image for a playable date. Images are built to unguessable hashed names (`IMAGE_SALT`), so future images can't be listed or fetched.
-- Light per-IP rate limit (30 req/min, per isolate).
-
-`web/server/scoring.ts` is a straight TypeScript port of scorer v3 (keyword lemmas, v2 synonyms, calibration from `params.json`). `npm test` checks it against Python-computed scores for all 76 eval + hand-rated pairs (they match to ±0.0, same bucket 76/76), and checks that no answer is in the built bundle (`npm run build` also fails if one is). The parity fixture uses only the public synonym tables. Puzzle synonym groups come from `synonyms.json` in the puzzle data and are merged in by both the Python and the TypeScript scorer.
-
-> **Parity note:** the fixture uses the cosines from the local Python model. Live Workers AI embeddings for `bge-small-en-v1.5` may differ slightly (quantisation/runtime), so live scores can be a point or so away from the Python prototype.
-
-### Run locally
-
-```bash
-# 0. (optional) the real puzzles, next to this repo; without them you get the fake sample
-git clone https://github.com/decgagan/prompt-guess-puzzles ../prompt-guess-puzzles
-# 1. embedding server (the Python model stands in for Workers AI)
-python scoring/embed_server.py            # http://127.0.0.1:8789
-# 2. the app + functions
+# Game: the Python model stands in for Workers AI
+python scoring/embed_server.py   # http://127.0.0.1:8789
 cd web && npm install
-cp .dev.vars.example .dev.vars            # EMBED_URL and FAKE_TODAY=2026-11-09
-npm run build && npm run pages:dev        # http://localhost:8788
-npm test                                  # parity + dist leak tests
-npm run play                              # Playwright plays a game on desktop + mobile
+cp .dev.vars.example .dev.vars   # EMBED_URL, and FAKE_TODAY to pretend it's a puzzle day
+npm run build && npm run pages:dev   # http://localhost:8788
 ```
 
-`npm run dev` (Vite on :5173) proxies `/api` to `pages:dev` for hot reload.
+`npm run dev` (Vite on :5173) proxies `/api` to `pages:dev` for hot reload. `FAKE_TODAY` is for local dev only; production uses the real UK date.
 
-### Deploy (not done yet)
+## Tests and CI
 
-Cloudflare Pages must **not** build from this repo on its own (it would only see the fake sample). Instead the [`Deploy`](.github/workflows/deploy.yml) GitHub Actions workflow checks out this repo and the private puzzles repo, builds with the real puzzles (the leak check runs against them) and uploads with `wrangler pages deploy`. It runs on every push to `main` once switched on.
+- `pytest -q`: keyword, model and puzzle-format tests.
+- `python scoring/evaluate.py`: scorer metrics.
+- `cd web && npm test`: Python/TS parity and the bundle leak check.
+- `npm run play`: Playwright plays a full game on desktop and mobile.
 
-What Dec needs to create (nothing has been created yet):
+The [`CI`](.github/workflows/ci.yml) workflow runs the Python tests, the evaluation, the web build and `npm test` on every push and pull request, using the sample puzzles.
 
-1. **Cloudflare Pages project** `prompt-guess` as a *Direct Upload* project (not connected to Git). Production branch `main`.
-2. **Pages project settings:** the Workers AI binding `AI` (Settings → Functions → Bindings; also declared in `web/wrangler.toml` for production and preview), and the secret `IMAGE_SALT` (a long random string).
-3. **Cloudflare API token** with *Account → Cloudflare Pages → Edit*, plus the account ID.
-4. **Fine-grained GitHub token** with access to `decgagan/prompt-guess-puzzles` only, *Contents: Read-only*.
-5. **GitHub secrets on this repo:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `PUZZLES_DEPLOY_KEY` (private half of a read-only deploy key on prompt-guess-puzzles), `IMAGE_SALT` (the **same** value as the Pages secret, because the build names images with it). Then set the repo **variable** `DEPLOY_ENABLED=true`.
-6. Custom domain on the Pages project.
+## Deploy
 
-New puzzles: push them to the private repo, then re-run the Deploy workflow (Actions → Deploy → Run workflow).
+Cloudflare Pages doesn't build from this repo, because it would only see the sample puzzles. Instead the [`Deploy`](.github/workflows/deploy.yml) workflow runs on every push to `main`:
 
-## Plan
+1. It checks out this repo, and the private puzzles repo using a **read-only deploy key** (`PUZZLES_DEPLOY_KEY`).
+2. It builds with the real puzzles and `IMAGE_SALT`, so the leak check runs against the real answers, then runs the tests.
+3. It uploads to the Direct Upload Pages project `prompt-guess` with `wrangler pages deploy`.
 
-- **Front end:** Svelte + Vite on Cloudflare Pages.
-- **Scoring:** a Cloudflare Worker using Workers AI `@cf/baai/bge-small-en-v1.5`, the same model as the Python prototype, so the calibration carries over.
-- **Puzzles:** prompts and images generated ahead of time and checked by hand; answers stay server-side.
-- **Progress:** streaks kept in the browser; no accounts.
+Repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `PUZZLES_DEPLOY_KEY` and `IMAGE_SALT`. The workflow only runs when the variable `DEPLOY_ENABLED` is `true`. The Pages project has the Workers AI binding `AI` (declared in `web/wrangler.toml`) and the same `IMAGE_SALT` as a secret.
 
-## Milestones
+To add new puzzles, push them to the private repo, then re-run Deploy (Actions → Deploy → Run workflow).
 
-1. ✅ **Scoring engine:** embeddings + calibrated 0–100 + keyword hits, with an eval set, metrics and tuning.
-2. ✅ **First 30 puzzles:** prompts, images, quality and safety checks. Kept in the private puzzles repo; format in [`puzzles-sample/`](puzzles-sample/).
-3. ✅ **Playable game:** guess input, score bar, keyword reveals, share grid.
-4. **Launch:** domain, streaks, stats, "how scoring works" page, screenshots.
-5. **Extras:** unlimited practice mode, archive, anonymous "most common wrong guess" stats.
+## Roadmap
 
-Rules for content: no adult content, no real people's faces.
+- Streaks and stats, a "how scoring works" page and screenshots.
+- Re-tune the scorer on real, anonymised guesses once there are some.
+- Unlimited practice mode and an archive of past puzzles.
+- Anonymous "most common wrong guess" stats.
+- Optional custom domain.
+
+Content rules: no adult content and no real people's faces.
 
 ## Licence
 
