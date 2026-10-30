@@ -29,3 +29,7 @@ def test_eval_metrics_floor():
     sc = Scorer()
     m = evaluate.metrics(evaluate.load_features(sc), sc.params)
     assert m["spearman"] >= 0.9 and m["bucket_accuracy"] >= 0.85
+
+def test_v1_still_available():
+    from prompt_guess_scoring import Params
+    assert Params.load(version=1).kw_weight == 0.2 and Params.load().version == 2

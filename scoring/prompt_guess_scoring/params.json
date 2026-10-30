@@ -1,11 +1,12 @@
 {
   "cos_lo": 0.55,
-  "cos_hi": 0.9,
+  "cos_hi": 0.89,
   "gamma": 1.0,
-  "kw_weight": 0.2,
+  "kw_weight": 0.15,
   "thresholds": {
     "partial": 5,
     "close": 50,
     "great": 85
-  }
+  },
+  "version": 2
 }

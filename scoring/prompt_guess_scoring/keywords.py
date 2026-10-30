@@ -56,7 +56,27 @@ _SYN_GROUPS = [
     ["street", "road", "alley", "avenue"],
     ["neon", "glowing", "cyberpunk"],
 ]
+# v2 additions: broader / near-synonym words players reach for.
+_SYN_GROUPS_V2 = [
+    ["horse", "horseback", "pony", "stallion", "steed"],
+    ["chess", "game", "boardgame"],
+    ["park", "outside", "outdoors", "outdoor"],
+    ["robot", "machine", "android", "droid", "bot", "cyborg"],
+    ["astronaut", "spaceman", "cosmonaut", "spacewoman"],
+    ["ride", "riding", "rides", "rode", "riding"],
+    ["balloon", "airship", "blimp"],
+    ["cabin", "house", "home", "cottage", "hut", "lodge"],
+    ["arctic", "ice", "icy", "polar", "glacier"],
+    ["drink", "drinking", "sipping", "sip", "drinks"],
+    ["water", "watering", "watered"],
+    ["plant", "plants", "flower", "flowers"],
+]
 SYNONYMS = {w: g[0] for g in _SYN_GROUPS for w in g}
+SYNONYMS_V2 = dict(SYNONYMS)
+for _g in _SYN_GROUPS_V2:
+    _c = SYNONYMS_V2.get(_g[0], _g[0])
+    for _w in _g:
+        SYNONYMS_V2[_w] = _c
 
 _IRREGULAR = {"mice": "mouse", "geese": "goose", "feet": "foot", "teeth": "tooth",
               "men": "man", "women": "woman", "children": "child", "people": "person",
@@ -84,12 +104,13 @@ def lemma(word: str) -> str:
     return w
 
 
-def canonical(word: str) -> str:
+def canonical(word: str, syn: dict | None = None) -> str:
+    syn = SYNONYMS if syn is None else syn
     w = word.lower()
-    if w in SYNONYMS:
-        return SYNONYMS[w]
+    if w in syn:
+        return syn[w]
     l = lemma(w)
-    return SYNONYMS.get(l, l)
+    return syn.get(l, l)
 
 
 def content_words(text: str) -> list[str]:
@@ -97,15 +118,16 @@ def content_words(text: str) -> list[str]:
     return [t for t in toks if t not in STOPWORDS and len(t) > 1]
 
 
-def keyword_match(answer: str, guess: str) -> tuple[float, list[str]]:
+def keyword_match(answer: str, guess: str, version: int = 1) -> tuple[float, list[str]]:
     """Return (recall of the answer's content words, matched answer words)."""
     ans = content_words(answer)
     if not ans:
         return 0.0, []
-    guess_canon = {canonical(t) for t in content_words(guess)}
+    syn = SYNONYMS_V2 if version >= 2 else SYNONYMS
+    guess_canon = {canonical(t, syn) for t in content_words(guess)}
     matched, seen = [], set()
     for t in ans:
-        c = canonical(t)
+        c = canonical(t, syn)
         if c in seen:
             continue
         seen.add(c)

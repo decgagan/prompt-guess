@@ -25,3 +25,8 @@ def test_combine_bounds_and_buckets():
     assert combine(0.0, 0.0, p) == 0
     assert combine(1.0, 1.0, p) == 100
     assert bucket(100, p) == "great" and bucket(0, p) == "miss"
+
+def test_v2_synonyms_only_in_v2():
+    assert keyword_match("an old man playing chess in a park", "a man playing a board game outside", 1)[0] < \
+           keyword_match("an old man playing chess in a park", "a man playing a board game outside", 2)[0]
+    assert "horse" in keyword_match("riding a horse", "on horseback", 2)[1]

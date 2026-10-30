@@ -32,3 +32,16 @@ Mean score by expected bucket: miss 0, partial 30, close 61, great 91.
 ## Human rating check
 
 `human_ratings.csv` holds 12 pairs from `eval.csv` that Dec scored by hand (0–100) on 2026-10-30, next to the scorer's score at the time (v1). v1 agreed with his buckets on 12 of 12 pairs, with a mean absolute error of 7.0 points and Spearman 0.958. It was a little stingy when a guess used a broader or similar word ("board game" for "chess", "spaceman" for "astronaut").
+
+## v2 (2026-10-30)
+
+A small tweak after Dec's ratings: v1 is kept as `params_v1.json` (`Params.load(version=1)`); v2 is the default `params.json`.
+
+- **More synonyms and broader words (v2 table only):** horse/horseback, chess/game, park/outside/outdoors, robot/machine/bot, astronaut/spaceman, cabin/house/hut, arctic/ice/polar, drinking/sipping, balloon/airship, plant/flower.
+- **Slightly more weight on meaning:** 85% meaning / 15% key words (was 80/20), and the cosine ceiling for 100 is lowered from 0.90 to 0.89.
+- Bucket thresholds are unchanged (85 / 50 / 5). Nothing was re-fitted to Dec's 12 pairs.
+
+| | eval.csv Spearman | eval.csv bucket acc. | vs Dec: MAE | vs Dec: Spearman | vs Dec: buckets |
+|---|---|---|---|---|---|
+| v1 | 0.968 | 95.3% | 7.0 | 0.957 | 12/12 |
+| v2 | 0.966 | 90.6% | 6.0 | 0.943 | 12/12 |

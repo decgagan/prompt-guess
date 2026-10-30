@@ -21,12 +21,12 @@ EVAL = Path(__file__).with_name("eval.csv")
 ORDER = {"miss": 0, "partial": 1, "close": 2, "great": 3}
 
 
-def load_features(scorer: Scorer) -> pd.DataFrame:
-    df = pd.read_csv(EVAL, comment="#")
+def load_features(scorer: Scorer, path=EVAL) -> pd.DataFrame:
+    df = pd.read_csv(path, comment="#")
     a = scorer.embed(df.answer.tolist())
     g = scorer.embed(df.guess.tolist())
     df["cosine"] = (a * g).sum(axis=1)
-    kw = [keyword_match(x, y) for x, y in zip(df.answer, df.guess)]
+    kw = [keyword_match(x, y, scorer.params.version) for x, y in zip(df.answer, df.guess)]
     df["kw"] = [k[0] for k in kw]
     df["matched"] = [k[1] for k in kw]
     df["target"] = df.expected.map(ORDER)
