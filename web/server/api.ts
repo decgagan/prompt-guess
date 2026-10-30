@@ -1,6 +1,7 @@
 // Server-only puzzle + scoring logic for the Pages Functions. Never imported by src/.
-import puzzles from "../../puzzles/puzzles.json";
-import { cosine, scoreFromCosine, maskAnswer, PARAMS, type ScoreResult } from "./scoring.ts";
+import puzzles from "../.puzzles/puzzles.json";
+import synonymGroups from "../.puzzles/synonyms.json";
+import { addSynonymGroups, cosine, scoreFromCosine, maskAnswer, PARAMS, type ScoreResult } from "./scoring.ts";
 
 export interface Env {
   AI?: { run(model: string, input: { text: string[] }): Promise<{ data: number[][] }> };
@@ -11,6 +12,7 @@ export interface Env {
 }
 interface Puzzle { id: number; date: string; prompt: string; difficulty: string; image: string; alt: string }
 const PUZZLES = puzzles as Puzzle[];
+addSynonymGroups(synonymGroups as string[][]);
 const MODEL = "@cf/baai/bge-small-en-v1.5";
 export const MAX_GUESSES = 5;
 export const MAX_GUESS_CHARS = 120;

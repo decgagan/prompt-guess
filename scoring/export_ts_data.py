@@ -3,14 +3,16 @@
 python scoring/export_ts_data.py            # tables only (fast, no model)
 python scoring/export_ts_data.py --fixture  # + expected scores from the Python scorer
 """
-import csv, json, sys
+import csv, json, os, sys
 from pathlib import Path
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
+# Generic tables + a fixture without any (private) puzzle synonyms: the web app adds those at build time.
+os.environ["PUZZLES_DIR"] = str(HERE.parent / "puzzles-sample")
 from prompt_guess_scoring import keywords as K
 
 OUT = HERE.parent / "web" / "server"
-tables = {"stopwords": sorted(K.STOPWORDS), "synonyms_v1": K.SYNONYMS, "synonyms_v2": K.SYNONYMS_V2,
+tables = {"stopwords": sorted(K.STOPWORDS), "synonyms_v1": K.SYNONYMS, "synonyms_v2": K.SYNONYMS_V2_BASE,
           "irregular": K._IRREGULAR}
 (OUT / "keywords.json").write_text(json.dumps(tables, indent=1, sort_keys=True) + "\n")
 print("wrote", OUT / "keywords.json")

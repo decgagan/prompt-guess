@@ -1,7 +1,8 @@
+// Uses web/.puzzles/ (the private puzzles when synced, else the sample).
 // Fail the build if any puzzle answer (or a distinctive chunk of one) is in the client bundle.
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
-const puzzles = JSON.parse(readFileSync(new URL("../../puzzles/puzzles.json", import.meta.url)));
+const puzzles = JSON.parse(readFileSync(new URL("../.puzzles/puzzles.json", import.meta.url)));
 const dist = process.argv[2] ?? new URL("../dist/", import.meta.url).pathname;
 const files = [];
 const walk = (d) => { for (const n of readdirSync(d)) { const p = join(d, n); statSync(p).isDirectory() ? walk(p) : /\.(js|css|html|json|txt|map)$/.test(n) && files.push(p); } };

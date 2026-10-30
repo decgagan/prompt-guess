@@ -3,13 +3,17 @@
   "private": true,
   "version": "0.3.0",
   "type": "module",
-  "engines": { "node": ">=20.19" },
+  "engines": {
+    "node": ">=20.19"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/stage-images.mjs && node scripts/check-dist.mjs",
-    "pages:dev": "wrangler pages dev --port 8788",
+    "build": "npm run sync && vite build && node scripts/stage-images.mjs && node scripts/check-dist.mjs",
+    "pages:dev": "npm run sync && wrangler pages dev --port 8788",
     "test": "tsx --test test/*.test.ts",
-    "play": "node scripts/play.mjs"
+    "play": "node scripts/play.mjs",
+    "sync": "node scripts/sync-puzzles.mjs",
+    "pretest": "npm run sync"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.1",

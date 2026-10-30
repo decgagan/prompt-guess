@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import re
 
+from .puzzles_data import load_synonym_groups as _puzzle_synonym_groups
+
 STOPWORDS = frozenset("""
 a an the and or but of in on at to for with by from into onto over under above below
 up down out off near beside behind between through during while as is are was were be
@@ -72,11 +74,21 @@ _SYN_GROUPS_V2 = [
     ["plant", "plants", "flower", "flowers"],
 ]
 SYNONYMS = {w: g[0] for g in _SYN_GROUPS for w in g}
-SYNONYMS_V2 = dict(SYNONYMS)
-for _g in _SYN_GROUPS_V2:
-    _c = SYNONYMS_V2.get(_g[0], _g[0])
-    for _w in _g:
-        SYNONYMS_V2[_w] = _c
+
+
+def _merge(base: dict[str, str], groups) -> dict[str, str]:
+    out = dict(base)
+    for g in groups:
+        c = out.get(g[0], g[0])
+        for w in g:
+            out[w] = c
+    return out
+
+
+# Generic v2 synonyms (public). Puzzle-specific groups hint at answers, so they live with the
+# private puzzle data (synonyms.json) and are merged in at import time.
+SYNONYMS_V2_BASE = _merge(SYNONYMS, _SYN_GROUPS_V2)
+SYNONYMS_V2 = _merge(SYNONYMS_V2_BASE, _puzzle_synonym_groups())
 
 _IRREGULAR = {"mice": "mouse", "geese": "goose", "feet": "foot", "teeth": "tooth",
               "men": "man", "women": "woman", "children": "child", "people": "person",

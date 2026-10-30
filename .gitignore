@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .venv/
 .ipynb_checkpoints/
+
+# real puzzle data lives in the private repo, never here
+/puzzles/

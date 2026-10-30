@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "date": "2026-11-09",
+    "prompt": "a red kite flying high over a green hill",
+    "difficulty": "easy",
+    "image": "images/001.webp",
+    "alt": "Something colourful in the sky above rolling grass.",
+    "gen_prompt": "a red kite flying high over a green hill, flat illustration (FAKE SAMPLE PUZZLE)"
+  },
+  {
+    "id": 2,
+    "date": "2026-11-10",
+    "prompt": "a yellow boat floating on a calm blue lake",
+    "difficulty": "easy",
+    "image": "images/002.webp",
+    "alt": "A small vessel resting on still water.",
+    "gen_prompt": "a yellow boat floating on a calm blue lake, flat illustration (FAKE SAMPLE PUZZLE)"
+  },
+  {
+    "id": 3,
+    "date": "2026-11-11",
+    "prompt": "an orange cat sleeping on a purple cushion",
+    "difficulty": "easy",
+    "image": "images/003.webp",
+    "alt": "A pet curled up asleep indoors.",
+    "gen_prompt": "an orange cat sleeping on a purple cushion, flat illustration (FAKE SAMPLE PUZZLE)"
+  }
+]

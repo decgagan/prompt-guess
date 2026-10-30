@@ -12,7 +12,15 @@ export type Bucket = "great" | "close" | "partial" | "miss";
 
 const STOP = new Set<string>(tables.stopwords);
 const SYN1: Record<string, string> = tables.synonyms_v1;
-const SYN2: Record<string, string> = tables.synonyms_v2;
+const SYN2: Record<string, string> = { ...tables.synonyms_v2 };
+
+/** Merge puzzle-specific synonym groups (private data) into the v2 table, as the Python does. */
+export function addSynonymGroups(groups: string[][]): void {
+  for (const g of groups) {
+    const c = has(SYN2, g[0]) ? SYN2[g[0]] : g[0];
+    for (const w of g) SYN2[w] = c;
+  }
+}
 const IRREG: Record<string, string> = tables.irregular;
 const has = (o: Record<string, string>, k: string) => Object.prototype.hasOwnProperty.call(o, k);
 

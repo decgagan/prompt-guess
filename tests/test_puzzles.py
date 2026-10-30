@@ -2,12 +2,17 @@ import datetime
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-PUZZLES = json.loads((ROOT / "puzzles" / "puzzles.json").read_text())
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scoring"))
+from prompt_guess_scoring.puzzles_data import puzzles_dir, load_puzzles
+
+# Runs against the private puzzles when checked out, else the public fake sample (CI).
+ROOT = puzzles_dir()
+PUZZLES = load_puzzles()
 
 
-def test_thirty_puzzles_with_unique_ids_and_dates():
-    assert len(PUZZLES) == 30
+def test_puzzles_with_unique_ids_and_dates():
+    assert len(PUZZLES) >= 1
     assert len({p["id"] for p in PUZZLES}) == len(PUZZLES)
     dates = [datetime.date.fromisoformat(p["date"]) for p in PUZZLES]
     assert len(set(dates)) == len(dates)

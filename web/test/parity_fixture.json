@@ -549,10 +549,9 @@
   "answer": "a steaming cup of coffee on a rainy windowsill",
   "guess": "a mug of coffee",
   "cosine": 0.7944599390029907,
-  "score": 63.9,
+  "score": 59.9,
   "bucket": "close",
   "matched": [
-   "cup",
    "coffee"
   ]
  },
