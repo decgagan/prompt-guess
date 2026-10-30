@@ -179,44 +179,43 @@
  },
  {
   "source": "eval",
-  "answer": "a neon-lit cyberpunk city street in the rain",
-  "guess": "a rainy cyberpunk street with neon lights",
-  "cosine": 0.9600451588630676,
-  "score": 92.0,
+  "answer": "a lantern-lit harbour market on a foggy evening",
+  "guess": "a misty evening market by the docks lit with lanterns",
+  "cosine": 0.8715325593948364,
+  "score": 86.8,
   "bucket": "great",
   "matched": [
-   "neon",
-   "street",
-   "rain"
+   "lantern",
+   "lit",
+   "market",
+   "evening"
   ]
  },
  {
   "source": "eval",
-  "answer": "a neon-lit cyberpunk city street in the rain",
-  "guess": "a futuristic city at night",
-  "cosine": 0.7637543678283691,
-  "score": 52.9,
+  "answer": "a lantern-lit harbour market on a foggy evening",
+  "guess": "a busy seaside market",
+  "cosine": 0.7818013429641724,
+  "score": 56.3,
   "bucket": "close",
   "matched": [
-   "city"
+   "market"
   ]
  },
  {
   "source": "eval",
-  "answer": "a neon-lit cyberpunk city street in the rain",
-  "guess": "a wet road",
-  "cosine": 0.7211570143699646,
-  "score": 43.1,
+  "answer": "a lantern-lit harbour market on a foggy evening",
+  "guess": "a boat in the fog",
+  "cosine": 0.7297426462173462,
+  "score": 41.1,
   "bucket": "partial",
-  "matched": [
-   "street"
-  ]
+  "matched": []
  },
  {
   "source": "eval",
-  "answer": "a neon-lit cyberpunk city street in the rain",
-  "guess": "a field of sunflowers",
-  "cosine": 0.5128558278083801,
+  "answer": "a lantern-lit harbour market on a foggy evening",
+  "guess": "a snowy mountain peak",
+  "cosine": 0.5435046553611755,
   "score": 0.0,
   "bucket": "miss",
   "matched": []

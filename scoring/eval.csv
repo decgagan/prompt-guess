@@ -16,10 +16,10 @@ answer,guess,expected
 "a cat reading a newspaper in a cafe","a cat in a cafe",close
 "a cat reading a newspaper in a cafe","a person reading a book",partial
 "a cat reading a newspaper in a cafe","a volcano erupting",miss
-"a neon-lit cyberpunk city street in the rain","a rainy cyberpunk street with neon lights",great
-"a neon-lit cyberpunk city street in the rain","a futuristic city at night",close
-"a neon-lit cyberpunk city street in the rain","a wet road",partial
-"a neon-lit cyberpunk city street in the rain","a field of sunflowers",miss
+"a lantern-lit harbour market on a foggy evening","a misty evening market by the docks lit with lanterns",great
+"a lantern-lit harbour market on a foggy evening","a busy seaside market",close
+"a lantern-lit harbour market on a foggy evening","a boat in the fog",partial
+"a lantern-lit harbour market on a foggy evening","a snowy mountain peak",miss
 "a watercolour painting of a fox in autumn leaves","a watercolor of a fox among fall leaves",great
 "a watercolour painting of a fox in autumn leaves","a fox in the forest",close
 "a watercolour painting of a fox in autumn leaves","an orange animal",partial
