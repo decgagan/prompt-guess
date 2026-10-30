@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: decgagan/prompt-guess-puzzles
-          token: ${{ secrets.PUZZLES_REPO_TOKEN }}   # fine-grained PAT: that repo only, Contents read-only
+          ssh-key: ${{ secrets.PUZZLES_DEPLOY_KEY }}   # read-only deploy key on prompt-guess-puzzles
           path: private-puzzles
       - uses: actions/setup-node@v4
         with:

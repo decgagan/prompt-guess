@@ -66,7 +66,7 @@ What Dec needs to create (nothing has been created yet):
 2. **Pages project settings:** the Workers AI binding `AI` (Settings → Functions → Bindings; also declared in `web/wrangler.toml` for production and preview), and the secret `IMAGE_SALT` (a long random string).
 3. **Cloudflare API token** with *Account → Cloudflare Pages → Edit*, plus the account ID.
 4. **Fine-grained GitHub token** with access to `decgagan/prompt-guess-puzzles` only, *Contents: Read-only*.
-5. **GitHub secrets on this repo:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `PUZZLES_REPO_TOKEN`, `IMAGE_SALT` (the **same** value as the Pages secret, because the build names images with it). Then set the repo **variable** `DEPLOY_ENABLED=true`.
+5. **GitHub secrets on this repo:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `PUZZLES_DEPLOY_KEY` (private half of a read-only deploy key on prompt-guess-puzzles), `IMAGE_SALT` (the **same** value as the Pages secret, because the build names images with it). Then set the repo **variable** `DEPLOY_ENABLED=true`.
 6. Custom domain on the Pages project.
 
 New puzzles: push them to the private repo, then re-run the Deploy workflow (Actions → Deploy → Run workflow).
