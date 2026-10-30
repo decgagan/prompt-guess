@@ -23,6 +23,10 @@ python evaluate.py --tune --cv # re-fit the calibration
 pytest -q
 ```
 
+**Milestone 2 (first 30 puzzles): done.** `puzzles/puzzles.json` holds 30 puzzles (10 easy, 12 medium, 8 hard), one a day from 2026-11-09, with 1024px WebP images in `puzzles/images/`. Each image was checked by eye; four were regenerated because they contained text that gave the answer away. `gen_prompt` is the exact text sent to the image model (the answer plus a "no text" instruction).
+
+> **Answers stay server-side.** `puzzles.json` contains the answers, so it must never be imported into the front-end bundle. The client gets only the date, image and alt text; the Worker reads the prompt and scores guesses.
+
 ## Plan
 
 - **Front end:** Svelte + Vite on Cloudflare Pages.
@@ -33,7 +37,7 @@ pytest -q
 ## Milestones
 
 1. ✅ **Scoring engine:** embeddings + calibrated 0–100 + keyword hits, with an eval set, metrics and tuning.
-2. **First 30 puzzles:** prompts, images, quality and safety checks.
+2. ✅ **First 30 puzzles:** prompts, images, quality and safety checks. See [`puzzles/`](puzzles/).
 3. **Playable game:** guess input, score bar, keyword reveals, share grid.
 4. **Launch:** domain, streaks, stats, "how scoring works" page, screenshots.
 5. **Extras:** unlimited practice mode, archive, anonymous "most common wrong guess" stats.
